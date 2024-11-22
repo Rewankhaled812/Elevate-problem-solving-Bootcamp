@@ -1,0 +1,48 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+
+void swap(int* a, int* b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+
+bool isPrime(int x) {
+    if (x < 2) {
+        return false;
+    }
+    for (int i = 2; i <= sqrt(x); i++) {
+        if (x % i == 0) {
+            return false;
+        }
+    }
+    return true; 
+}
+
+int main() {
+    int n, m;
+    cout << "Please enter the two integers: \n";
+    cin >> n >> m;
+
+    if (n > m) {
+        swap(&n, &m);
+    }
+
+    cout << "The prime numbers between " << n << " and " << m << ": \n";
+
+    for (int i = n + 1; i < m; i++) {
+        bool found = true;
+        if (isPrime(i)) {
+            cout << i << " ";
+            found = true;
+        }
+        if (!found) {
+            cout << "No prime numbers betweem them.";
+        }
+    }
+    cout << endl;
+    return 0;
+}
